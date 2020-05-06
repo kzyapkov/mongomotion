@@ -1,0 +1,46 @@
+author: mongoose-os
+description: A Mongoose OS app skeleton
+version: 1.0
+platform: esp8266
+
+# libs_version: ${mos.version}
+# modules_version: ${mos.version}
+# mongoose_os_version: ${mos.version}
+
+libs_version: 2.17.0
+modules_version: 2.17.0
+mongoose_os_version: 2.17.0
+
+sources:
+  - src
+
+filesystem:
+  - fs
+
+config_schema:
+  - ["device.id", "mongomotion-??????"]
+  - ["wifi.ap.ssid", "mongomotion-??????"]
+  - ["wifi.ap.pass", ""]
+  # - ["wifi.ap.trigger_on_gpio", ]
+  - ["debug.level", 2]
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/wifi
+  - origin: https://github.com/mongoose-os-libs/ca-bundle
+  - origin: https://github.com/mongoose-os-libs/rpc-service-config
+  - origin: https://github.com/mongoose-os-libs/rpc-service-fs
+  - origin: https://github.com/mongoose-os-libs/rpc-service-wifi
+  - origin: https://github.com/mongoose-os-libs/rpc-uart
+  - origin: https://github.com/mongoose-os-libs/rpc-ws
+  - origin: https://github.com/mongoose-os-libs/http-server
+  - origin: https://github.com/mongoose-os-libs/ota-http-server
+  - origin: https://github.com/mongoose-os-libs/mjs
+  - origin: https://github.com/mongoose-os-libs/mqtt
+  - origin: https://github.com/mongoose-os-libs/mbedtls
+    variant: esp8266-noatca
+
+build_vars:
+  MGOS_MBEDTLS_ENABLE_ATCA: 0
+
+
+manifest_version: 2017-09-29
