@@ -21,8 +21,6 @@
 #define ST3485EBDR_DE   4
 #define ST3485EBDR_RE   12
 
-#define SENSOR_GPIO     5
-
 static inline void _disable_rs_trx(void) {
   mgos_gpio_setup_output(ST3485EBDR_DE, false);
   mgos_gpio_setup_output(ST3485EBDR_RE, true);

@@ -1,4 +1,6 @@
-all: build
+
+
+.PHONY: build clean
 
 build:
 	mos build --local --verbose
