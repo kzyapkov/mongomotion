@@ -7,7 +7,7 @@ let SENSOR = 5;
 let STATUS_LED = 13;
 
 GPIO.setup_input(SENSOR, GPIO.PULL_UP);
-GPIO.setup_output(STATUS_LED, false); // led is active low, this turns it on
+GPIO.setup_output(STATUS_LED, false);  // led is active low, this turns it on
 
 function set_led(on) {
   let lvl = !!!on;
@@ -17,13 +17,11 @@ function set_led(on) {
 function update() {
   let motion = GPIO.read(SENSOR);
   set_led(motion);
-  print("MOTION: ", motion);
+  print('MOTION: ', motion);
 
   // MQTT
-  let topic = 'garage/' + Cfg.get('device.id') + '/status';
-  let message = JSON.stringify({
-    motion: motion
-  });
+  let topic = 'garage/' + Cfg.get('device.id') + '/motion';
+  let message = motion ? 'ON' : 'OFF';
   let ok = MQTT.pub(topic, message, 1);
 
   print('Published:', ok ? 'yes' : 'no', 'topic:', topic, 'message:', message);
