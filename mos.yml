@@ -7,9 +7,9 @@ platform: esp8266
 # modules_version: ${mos.version}
 # mongoose_os_version: ${mos.version}
 
-libs_version: 2.17.0
-modules_version: 2.17.0
-mongoose_os_version: 2.17.0
+libs_version: 2.19.0
+modules_version: 2.19.0
+mongoose_os_version: 2.19.0
 
 sources:
   - src
@@ -19,10 +19,12 @@ filesystem:
 
 config_schema:
   - ["device.id", "mongomotion-??????"]
+  - ["dns_sd.enable", true]
+  - ["dns_sd.host_name", "mongomotion-??????"]
   - ["wifi.ap.ssid", "mongomotion-??????"]
   - ["wifi.ap.pass", ""]
-  # - ["wifi.ap.trigger_on_gpio", ]
   - ["debug.level", 2]
+  # - ["wifi.ap.trigger_on_gpio", ]
 
 libs:
   - origin: https://github.com/mongoose-os-libs/wifi
@@ -35,12 +37,8 @@ libs:
   - origin: https://github.com/mongoose-os-libs/http-server
   - origin: https://github.com/mongoose-os-libs/ota-http-server
   - origin: https://github.com/mongoose-os-libs/mjs
+  - origin: https://github.com/mongoose-os-libs/dns-sd
   - origin: https://github.com/mongoose-os-libs/mqtt
   - origin: https://github.com/mongoose-os-libs/mbedtls
-    variant: esp8266-noatca
-
-build_vars:
-  MGOS_MBEDTLS_ENABLE_ATCA: 0
-
 
 manifest_version: 2017-09-29
